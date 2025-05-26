@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;700;500&display=swap");
+
+/* ========== Reset CSS ========== */
+
+html,
+body {
+  height: 100%;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  background-color: #202023;
+  color: #f9f9f9;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ========== Dark Mode Support ========== */
+
+body.dark {
+  background-color: #121212;
+  color: #eee;
+}
+
+/* Add more dark mode overrides as needed */

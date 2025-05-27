@@ -1,56 +1,97 @@
-import { Container } from "@chakra-ui/react";
+import { Box, Container, Flex, Image, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
+import MyPic from "../../assets/me.jpg";
+
+const MotionBox = motion(Box);
+const MotionImg = motion(Image);
 
 const Home = () => {
   return (
-    <Container maxW="2xl">
-      <div style={{ height: 2000 }}>
-        hat is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and
-        typesetting industry. Lorem Ipsum has been the industry's standard dummy
-        text ever since the 1500s, when an unknownz`` printer took a galley of
-        type and scrambled it to make a type specimen book. It has survived not
-        only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with
-        the release of Letraset sheets containing Lorem Ipsum passages, and more
-        recently with desktop publishing software like Aldus PageMaker including
-        versions of Lorem Ipsum. Why do we use it? It is a long established fact
-        that a reader will be distracted by the readable content of a page when
-        looking at its layout. The point of using Lorem Ipsum is that it has a
-        more-or-less normal distribution of letters, as opposed to using
-        'Content here, content here', making it look like readable English. Many
-        desktop publishing packages and web page editors now use Lorem Ipsum as
-        their default model text, and a search for 'lorem ipsum' will uncover
-        many web sites still in their infancy. Various versions have evolved
-        over the years, sometimes by accident, sometimes on purpose (injected
-        humour and the like). Where does it come from? Contrary to popular
-        belief, Lorem Ipsum is not simply random text. It has roots in a piece
-        of classical Latin literature from 45 BC, making it over 2000 years old.
-        Richard McClintock, a Latin professor at Hampden-Sydney College in
-        Virginia, looked up one of the more obscure Latin words, consectetur,
-        from a Lorem Ipsum passage, and going through the cites of the word in
-        classical literature, discovered the undoubtable source. Lorem Ipsum
-        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
-        Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.
-        This book is a treatise on the theory of ethics, very popular during the
-        Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
-        amet..", comes from a line in section 1.10.32. The standard chunk of
-        Lorem Ipsum used since the 1500s is reproduced below for those
-        interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
-        Malorum" by Cicero are also reproduced in their exact original form,
-        accompanied by English versions from the 1914 translation by H. Rackham.
-        Where can I get some? There are many variations of passages of Lorem
-        Ipsum available, but the majority have suffered alteration in some form,
-        by injected humour, or randomised words which don't look even slightly
-        believable. If you are going to use a passage of Lorem Ipsum, you need
-        to be sure there isn't anything embarrassing hidden in the middle of
-        text. All the Lorem Ipsum generators on the Internet tend to repeat
-        predefined chunks as necessary, making this the first true generator on
-        the Internet. It uses a dictionary of over 200 Latin words, combined
-        with a handful of model sentence structures, to generate Lorem Ipsum
-        which looks reasonable. The generated Lorem Ipsum is therefore always
-        free from repetition, injected humour, or non-characteristic words etc.
-        5 paragraphs words bytes lists Start with 'Lorem ipsum dolor sit
-        amet...'
-      </div>
+    <Container maxW="4xl">
+      <Box mt={20} mb={53}>
+        <Flex>
+          <Box
+            bg="hsla(0, 0%, 75%, 0.05)"
+            w="100%"
+            p="4"
+            color="white"
+            position="relative"
+            height={500}
+            borderRadius="10px"
+            boxShadow="0 4px 30px rgba(0, 0, 0, 0.1)"
+            backdropFilter="blur(10px)"
+          >
+            <Flex justifyContent="center" alignItems="center" h="100%">
+              <MotionImg
+                src={MyPic}
+                w="40%"
+                borderRadius="20px"
+                position="absolute"
+                transform="translateX(-100%)"
+                boxShadow="0 4px 30px rgba(0, 0, 0, 0.2)"
+                initial={{ opacity: 0, x: "-140%" }}
+                animate={{
+                  opacity: 1,
+                  x: "-100%",
+                  y: [0, -20],
+                }}
+                transition={{
+                  duration: 1,
+                  x: { duration: 1 },
+                  opacity: { duration: 1 },
+                  y: {
+                    delay: 1,
+                    duration: 4,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
+                  },
+                }}
+              />
+              <MotionBox
+                position="absolute"
+                left="35%"
+                transform="translateY(-50%)"
+                w={["90%", "60%"]}
+                p={6}
+                bg="rgba(0,0,0,0.4)"
+                borderRadius="16px"
+                boxShadow="md"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <Text fontSize="2xl" fontWeight="bold" mb={2}>
+                  Xin chào, mình là <span style={{ color: "#90cdf4" }}>KD</span>
+                </Text>
+                <Text fontSize="xl" mb={2}>
+                  <Typewriter
+                    words={[
+                      "Frontend Developer",
+                      "ReactJS Enthusiast",
+                      "UI/UX Lover",
+                      "Người thích sáng tạo giao diện đẹp",
+                    ]}
+                    loop={0}
+                    cursor
+                    cursorStyle="|"
+                    typeSpeed={60}
+                    deleteSpeed={40}
+                    delaySpeed={1200}
+                  />
+                </Text>
+                <Text fontSize="lg" mt={4}>
+                  Mình có kinh nghiệm xây dựng giao diện web hiện đại, tối ưu
+                  trải nghiệm người dùng với ReactJS, Chakra UI, và các công
+                  nghệ mới. Luôn sẵn sàng học hỏi và sáng tạo để mang lại giá
+                  trị tốt nhất cho sản phẩm.
+                </Text>
+              </MotionBox>
+            </Flex>
+          </Box>
+        </Flex>
+      </Box>
     </Container>
   );
 };

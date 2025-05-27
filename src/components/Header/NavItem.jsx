@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Heading } from "@chakra-ui/react";
-import { useColorModeValue } from "../ui/color-mode";
+import { Link } from "react-router-dom";
+import { Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { useColorModeValue } from "../ui/color-mode";
 
 // Tạo MotionBox kế thừa Box của Chakra
 const MotionBox = motion(Box);
@@ -15,19 +16,18 @@ const ItemStyle = {
 const NavItem = ({ prop }) => {
   return (
     <MotionBox
-      as="a"
-      href="#"
+      as={Link}
+      to={prop === "Home" ? "/" : `/${prop.toLowerCase()}`}
       px={3}
       py={2}
       style={ItemStyle}
-      alignItems="center"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
       _hover={{
         textDecoration: "none",
         borderBottom: "3px solid",
         borderColor: useColorModeValue("white"),
       }}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
     >
       {prop}
     </MotionBox>

@@ -13,10 +13,10 @@ const Header = () => {
         top={0}
         zIndex={10}
         bg="rgba(32, 32, 35, 0.1)"
-        backdropFilter="blur(10px)"
+        backdropFilter="blur(2px)"
         style={{ height: "70px", display: "flex", alignItems: "center" }}
       >
-        <Container maxW="3xl">
+        <Container maxW="4xl">
           <Flex justify="space-between" align="center">
             <Logo />
             <Flex gap={4} height="70px" alignItems="center">

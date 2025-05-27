@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;700;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 /* ========== Reset CSS ========== */
 
@@ -6,9 +6,10 @@ html,
 body {
   height: 100%;
   font-family: "M PLUS Rounded 1c", sans-serif;
-  background-color: #202023;
+  /* background-color: #202023; */
   color: #f9f9f9;
   scroll-behavior: smooth;
+  font-weight: 500;
 }
 
 a {
@@ -33,4 +34,12 @@ body.dark {
   color: #eee;
 }
 
-/* Add more dark mode overrides as needed */
+/* ========== Utility Classes ========== */
+.background-layer {
+  z-index: -1;
+}
+
+.content-layer {
+  z-index: 1;
+  position: relative;
+}

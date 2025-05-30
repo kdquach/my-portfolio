@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/logo.png";
-import * as motion from "motion/react-client";
+import { motion } from "motion/react-client";
 
 const logoStyle = {
   width: 50,
@@ -9,9 +9,11 @@ const logoStyle = {
   objectFit: "cover",
 };
 
+const MotionLogo = motion.img;
+
 const Logo = () => {
   return (
-    <motion.img
+    <MotionLogo
       src={logo}
       alt="logo"
       animate={{ rotate: 360 }}

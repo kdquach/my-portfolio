@@ -11,6 +11,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@chakra-ui/form-control": "^2.2.0",
     "@chakra-ui/react": "^3.19.1",
     "@emotion/react": "^11.14.0",
     "motion": "^12.12.2",

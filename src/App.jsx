@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home/Home";
-import About from "./components/About/About";
-import Skill from "./components/Skill/Skill";
-import Services from "./components/Services/Services";
-import Contact from "./components/Contact/Contact";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import Skills from "./pages/Skills/Skills";
+import Services from "./pages/Services/Services";
+import Contact from "./pages/Contact/Contact";
 import Header from "./components/Header/Header";
 import "../styles/global.css";
 import BackgroundSwirl from "./components/Background/BackgroundSwirl";
@@ -38,7 +38,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/skill" element={<Skill />} />
+          <Route path="/skills" element={<Skills />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>

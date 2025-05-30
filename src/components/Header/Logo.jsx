@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/logo.png";
-import { motion } from "motion/react-client";
+import { motion } from "framer-motion";
 
 const logoStyle = {
   width: 50,

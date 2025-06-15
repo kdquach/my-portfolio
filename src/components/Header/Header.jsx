@@ -3,9 +3,13 @@ import { Box, Container, Flex } from "@chakra-ui/react";
 import NavItem from "./NavItem";
 import Logo from "./Logo";
 import Avatar from "./Avatar";
+import { useTypeUI } from "../../hooks/typeUI";
+
 const Items = ["Home", "About", "Skills", "Services", "Contact"];
 
 const Header = () => {
+  const type = useTypeUI();
+  console.log(type);
   return (
     <>
       <Box

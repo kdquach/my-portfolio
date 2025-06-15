@@ -1,7 +1,5 @@
-import { Box, Container, SimpleGrid, Text, Image } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-
-const MotionBox = motion(Box);
+import "./Skill.css";
 
 const skills = [
   {
@@ -70,83 +68,27 @@ const skills = [
   },
 ];
 
-const Skill = () => {
-  // Hàm chuyển hex sang rgba
-  const hexToRgba = (hex, alpha = 0.85) => {
-    let c = hex.replace("#", "");
-    if (c.length === 3)
-      c = c
-        .split("")
-        .map((x) => x + x)
-        .join("");
-    const num = parseInt(c, 16);
-    return `rgba(${(num >> 16) & 255},${(num >> 8) & 255},${num & 255},${alpha})`;
-  };
-
+const Skill = ({ isVisible = true }) => {
   return (
-    <>
-      <Container
-        maxW="4xl"
-        h="100vh"
-        display={"flex"}
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Box>
-          <Text fontSize="3xl" fontWeight="bold" mb={8} textAlign="center">
-            My Skills
-          </Text>
-          <SimpleGrid columns={[2, 3, 4]} spacing={6} gap={6}>
-            {skills.map((skill, idx) => (
-              <MotionBox
-                key={skill.name}
-                whileHover={{
-                  scale: 1.08,
-                  boxShadow: "0 0 24px 8px #90cdf4",
-                }}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: idx * 0.1,
-                  type: "spring",
-                  stiffness: 300,
-                }}
-                bg={hexToRgba(skill.color, 0.5)}
-                color={skill.textColor || "white"}
-                borderRadius="lg"
-                p={4}
-                textAlign="center"
-                fontWeight="bold"
-                fontSize="xl"
-                boxShadow="md"
-                cursor="pointer"
-                display="flex"
-                flexDirection="column"
-                alignItems="center"
-                justifyContent="center"
-                minH="100px"
-              >
-                {/* Hiển thị icon nếu có, nếu không thì hiển thị ảnh */}
-                {skill.icon ? (
-                  <Box mb={3}>{skill.icon}</Box>
-                ) : (
-                  <Image
-                    src={skill.img}
-                    alt={skill.name}
-                    boxSize="40px"
-                    mb={3}
-                    bg="whiteAlpha.800"
-                    borderRadius="full"
-                    p={2}
-                  />
-                )}
-                {skill.name}
-              </MotionBox>
-            ))}
-          </SimpleGrid>
-        </Box>
-      </Container>
-    </>
+    <motion.div
+      className="skill-container"
+      initial={{ opacity: 1, y: 0 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 0.5 }}
+      style={{ pointerEvents: isVisible ? "auto" : "none" }}
+    >
+      <div className="skill-main-box">
+        <div className="skill-title">My Skills</div>
+        <div className="skill-list">
+          {skills.map((skill) => (
+            <div className="skill-card" key={skill.name}>
+              <img src={skill.img} alt={skill.name} className="skill-img" />
+              <div className="skill-name">{skill.name}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
   );
 };
 

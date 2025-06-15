@@ -1,9 +1,8 @@
-import { Box, Container, Flex, Text, List, ListItem } from "@chakra-ui/react";
+import { Box, Container, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import "./About.css";
 
-const MotionBox = motion(Box);
-
-const About = () => {
+const About = ({ isVisible = true }) => {
   return (
     <Container maxW="4xl" h="100vh" position="relative">
       <Box
@@ -14,62 +13,43 @@ const About = () => {
         w="100%"
       >
         <Flex>
-          <MotionBox
-            w="100%"
-            p={8}
-            bg="rgba(0,0,0,0.4)"
-            borderRadius="16px"
-            color="white"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+          <motion.div
+            className="about-container"
+            initial={{ opacity: 1, y: 0 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+            transition={{ duration: 0.5 }}
+            style={{ pointerEvents: isVisible ? "auto" : "none" }}
           >
-            <Text fontSize="3xl" fontWeight="bold" mb={4} textAlign="center">
-              About Me
-            </Text>
-            <Text fontSize="lg" mb={3} textAlign="center">
-              Hi, I'm <b>KD</b> — a motivated developer with a passion for
-              building effective and user-friendly web applications.
-            </Text>
-            <Text fontSize="md" mb={3} textAlign="center">
-              I specialize in modern full-stack development using technologies
-              like <b>React</b>, <b>JavaScript</b>, and <b>SQL</b>. I enjoy
-              solving real-world problems through clean code and thoughtful
-              design.
-            </Text>
-            <Text fontSize="md" mb={3} textAlign="center">
-              Some of the projects I’ve built include:
-            </Text>
-            <List.Root
-              spacing={2}
-              mb={3}
-              color="#90cdf4"
-              fontSize="md"
-              textAlign="center"
-            >
-              <List.Item>
-                🍔 A fast food shop management website — handling products,
-                categories, user accounts, and cart functionality.
-              </List.Item>
-              <List.Item>
-                🍽️ A restaurant management system — supporting menu editing,
-                reservations, and admin analytics.
-              </List.Item>
-            </List.Root>
-            <Text fontSize="md" mb={3} textAlign="center">
-              Each project helped me grow in both front-end and back-end
-              development, from database modeling to UI/UX optimization.
-            </Text>
-            <Text fontSize="md" mb={3} textAlign="center">
-              Beyond coding, I’m passionate about <b>UI/UX design</b>,{" "}
-              <b>anime</b>, and sometimes enjoy writing{" "}
-              <i>poetry for someone special</i> 💌.
-            </Text>
-            <Text fontSize="md" textAlign="center">
-              I believe in building clean, scalable code and meaningful user
-              experiences. Let’s create something great together.
-            </Text>
-          </MotionBox>
+            <div className="about-main-box">
+              <div className="about-title">About Me</div>
+              <div className="about-text">
+                Hi! I'm <b>KD</b>, a full-stack developer passionate about
+                building interactive digital experiences.
+              </div>
+              <div className="about-text">
+                I specialize in <b>React</b>, <b>Express</b>, and <b>MongoDB</b>{" "}
+                to create modern, full-stack applications with responsive
+                designs.
+              </div>
+              <ul className="about-list">
+                <li key="food">🍜 Food ordering website</li>
+                <li key="perfume">🧴 Perfume Shop E-commerce Website</li>
+                <li key="game">🎮 Game development enthusiast</li>
+              </ul>
+              <div className="about-text">
+                Beyond coding, I'm passionate about:
+              </div>
+              <ul className="about-list">
+                <li key="sports">⚽ Sports & physical activities</li>
+                <li key="gaming">🎮 Gaming & interactive media</li>
+                <li key="design">🎨 UX/UI design principles</li>
+                <li key="foodie">🍱 Exploring culinary experiences</li>
+              </ul>
+              <div className="about-text">
+                Let's collaborate and build something extraordinary together!
+              </div>
+            </div>
+          </motion.div>
         </Flex>
       </Box>
     </Container>

@@ -1,69 +1,73 @@
 import { Box, Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import "./Services.css";
 
 const MotionBox = motion(Box);
 
 const services = [
   {
-    title: "Web Development",
-    description:
-      "Build responsive and modern websites using ReactJS, NodeJS, and more.",
+    name: "Web Development",
+    img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    desc: "Build modern, responsive websites and web apps using ReactJS, HTML, CSS, and JavaScript.",
   },
   {
-    title: "UI/UX Design",
-    description:
-      "Design clean and user-friendly interfaces for web and mobile applications.",
+    name: "API Design",
+    img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    desc: "Design and implement RESTful APIs with Node.js, ExpressJS, and secure best practices.",
   },
   {
-    title: "API Integration",
-    description:
-      "Integrate third-party APIs and build robust backend services.",
+    name: "UI/UX Design",
+    img: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
+    desc: "Create intuitive, user-friendly interfaces and wireframes for web and mobile platforms.",
+  },
+  {
+    name: "Mobile App",
+    img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    desc: "Develop cross-platform mobile apps with modern JavaScript frameworks and libraries.",
+  },
+  {
+    name: "Database Integration",
+    img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    desc: "Integrate and manage SQL/NoSQL databases for scalable, reliable data storage.",
+  },
+  {
+    name: "Consulting & Training",
+    img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+    desc: "Provide coding consultation, code review, and training for teams or individuals.",
   },
 ];
 
 const Services = () => {
   return (
-    <Container maxW="4xl" py={12} h={"100vh"} position="relative">
-      <Box
-        position="absolute"
-        top="55%"
-        left="50%"
-        transform="translate(-50%, -50%)"
-        w="100%"
-      >
-        <Heading as="h2" fontSize="3xl" mb={8} textAlign="center">
-          My Services
-        </Heading>
-        <SimpleGrid columns={[1, 2, 3]} spacing={8} gap={6}>
-          {services.map((service, idx) => (
-            <MotionBox
-              key={service.title}
-              p={6}
-              boxShadow="md"
-              borderRadius="lg"
-              bg="whiteAlpha.900"
-              textAlign="center"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: idx * 0.15,
-                duration: 0.5,
-                type: "spring",
-              }}
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 0 24px 8px #90cdf4",
-              }}
-            >
-              <Text fontWeight="bold" fontSize="xl" mb={2}>
-                {service.title}
-              </Text>
-              <Text color="gray.600">{service.description}</Text>
-            </MotionBox>
+    <div className="service-container">
+      <div className="service-main-box">
+        <div className="service-title">My Services</div>
+        <div className="service-list">
+          {services.map((service) => (
+            <div className="service-card" key={service.name}>
+              <img
+                src={service.img}
+                alt={service.name}
+                className="service-img"
+              />
+              <div>
+                <div className="service-name">{service.name}</div>
+                <div
+                  className="service-desc"
+                  style={{
+                    fontSize: "0.98rem",
+                    color: "#b9e3fa",
+                    marginTop: "0.2rem",
+                  }}
+                >
+                  {service.desc}
+                </div>
+              </div>
+            </div>
           ))}
-        </SimpleGrid>
-      </Box>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 

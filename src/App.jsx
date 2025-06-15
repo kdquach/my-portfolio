@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import BottomNavigationBar from "./components/BottomNavigationBar/BottomNavigationBar";
 import About from "./pages/About/About";
 import Skills from "./pages/Skills/Skills";
 import Services from "./pages/Services/Services";
@@ -7,8 +8,11 @@ import Contact from "./pages/Contact/Contact";
 import Header from "./components/Header/Header";
 import "../styles/global.css";
 import BackgroundSwirl from "./components/Background/BackgroundSwirl";
+import { useTypeUI } from "./hooks/typeUI";
 
 function App() {
+  const typeUI = useTypeUI();
+
   return (
     <div
       style={{ position: "relative", overflow: "hidden" }}
@@ -34,7 +38,7 @@ function App() {
           height: "100%",
         }}
       >
-        <Header />
+        <div>{typeUI == 3 ? <Header /> : <BottomNavigationBar />}</div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

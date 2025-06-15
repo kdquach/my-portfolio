@@ -5,47 +5,31 @@ import {
   Image,
   Text,
   HStack,
-  IconButton,
   Link,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 import MyPic from "../../assets/me.jpg";
+import "./Home.css";
 
 const MotionBox = motion(Box);
 const MotionImg = motion(Image);
 
 const Home = () => {
+  // Xác định loại màn hình
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
   return (
-    <Container maxW="4xl" h="100vh" position="relative">
-      <Box
-        position="absolute"
-        top="55%"
-        left="50%"
-        transform="translate(-50%, -50%)"
-        w="100%"
-      >
-        <Flex>
-          <Box
-            bg="hsla(0, 0%, 75%, 0.05)"
-            w="100%"
-            p="4"
-            color="white"
-            position="relative"
-            height={500}
-            borderRadius="10px"
-            boxShadow="0 4px 30px rgba(0, 0, 0, 0.1)"
-            backdropFilter="blur(10px)"
-          >
-            <Flex justifyContent="center" alignItems="center" h="100%">
+    <Container className="home-container">
+      <Box className="home-abs-box">
+        <Flex className="home-flex">
+          <Box className="home-main-box">
+            <Flex className="home-inner-flex">
               <MotionImg
                 src={MyPic}
-                w="40%"
-                borderRadius="20px"
-                position="absolute"
-                transform="translateX(-100%)"
-                boxShadow="0 4px 30px rgba(0, 0, 0, 0.2)"
+                className="home-motion-img"
                 initial={{ opacity: 0, x: "-140%" }}
                 animate={{
                   opacity: 1,
@@ -66,29 +50,26 @@ const Home = () => {
                 }}
               />
               <MotionBox
-                position="absolute"
-                left="35%"
-                transform="translateY(-50%)"
-                w={["90%", "60%"]}
-                p={6}
-                bg="rgba(0,0,0,0.4)"
-                borderRadius="16px"
-                boxShadow="md"
+                className="home-motion-box"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
               >
-                <Text fontSize="2xl" fontWeight="bold" mb={2}>
-                  Hi, I'm <span style={{ color: "#90cdf4" }}>KD</span>
+                <Text className="home-title">
+                  Hi, I'm <span className="home-title-highlight">KD</span>
                 </Text>
-                <Text fontSize="xl" mb={2}>
+                <Text className="home-typewriter">
                   <Typewriter
-                    words={[
-                      "Frontend Developer",
-                      "ReactJS Enthusiast",
-                      "UI/UX Lover",
-                      "Người thích sáng tạo giao diện đẹp",
-                    ]}
+                    words={
+                      isMobile
+                        ? ["Frontend Dev", "ReactJS", "UI/UX"]
+                        : [
+                            "Frontend Developer",
+                            "ReactJS Enthusiast",
+                            "UI/UX Lover",
+                            "Người thích sáng tạo giao diện đẹp",
+                          ]
+                    }
                     loop={0}
                     cursor
                     cursorStyle="|"
@@ -98,29 +79,17 @@ const Home = () => {
                   />
                 </Text>
 
-                <Text fontSize="lg" mt={4}>
-                  I'm a Front-end Developer passionate about building beautiful
-                  interfaces and smooth user experiences using React, Tailwind
-                  CSS & Chakra UI. At the same time, I can also develop Back-end
-                  with NestJS, Express & MongoDB to create complete
-                  applications.
+                <Text className="home-desc">
+                  {isMobile
+                    ? "I'm a Front-end Developer passionate about UI/UX."
+                    : "I'm a Front-end Developer passionate about building beautiful interfaces and smooth user experiences using React, Tailwind CSS & Chakra UI. At the same time, I can also develop Back-end with NestJS, Express & MongoDB to create complete applications."}
                 </Text>
-                <HStack
-                  spacing={4}
-                  mt={4}
-                  display="flex"
-                  justifyContent="center"
-                  gap={4}
-                >
+                <HStack className="home-socials">
                   <Link
                     href="https://www.facebook.com/kd.quach03"
                     target="_blank"
                     isExternal
-                    outline={"none"}
-                    _hover={{
-                      transform: "translateY(-2px)",
-                      transition: "all 0.3s",
-                    }}
+                    className="home-social-link"
                   >
                     <FaFacebook
                       size="30"
@@ -132,10 +101,7 @@ const Home = () => {
                     href="https://github.com/kdquach"
                     target="_blank"
                     isExternal
-                    _hover={{
-                      transform: "translateY(-2px)",
-                      transition: "all 0.3s",
-                    }}
+                    className="home-social-link"
                   >
                     <FaGithub
                       size="30"
@@ -147,10 +113,7 @@ const Home = () => {
                     href="https://www.instagram.com/stories/kd.quach03"
                     target="_blank"
                     isExternal
-                    _hover={{
-                      transform: "translateY(-2px)",
-                      transition: "all 0.3s",
-                    }}
+                    className="home-social-link"
                   >
                     <FaInstagram
                       size="30"

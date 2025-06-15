@@ -17,6 +17,7 @@
   position: relative;
   border-radius: 16px;
   background: rgba(0, 0, 0, 0.4);
+  margin-bottom: 100px;
   /* KHÔNG có height: 100vh */
 }
 

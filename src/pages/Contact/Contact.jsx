@@ -19,7 +19,13 @@ const Contact = () => {
         transform="translate(-50%, -50%)"
         w="100%"
       >
-        <Box boxShadow="lg" p={8} borderRadius="lg" bg="rgba(0,0,0,0.4)">
+        <Box
+          boxShadow="lg"
+          p={8}
+          borderRadius="lg"
+          bg="rgba(0,0,0,0.4)"
+          marginBottom={100}
+        >
           <Heading as="h2" fontSize="3xl" mb={6} textAlign="center">
             Contact Me
           </Heading>
